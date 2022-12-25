@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Digital clock</title>
+    <style>
+        body{
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            width: 96%;
+            height: 95vh;
+            text-shadow: 2px 2px gray;
+        }
+        #clock{
+            width: 20%;
+            height: 20vh;
+            padding: 50px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background-color: rgb(236, 198, 28);
+            box-shadow: 2px 2px 3px 5px rgb(29, 28, 28);
+            font-size: 30px;
+            font-weight: 700;
+            border-radius: 50%;
+        }
+    </style>
+</head>
+<body>
+    <div id="clock"></div>
+    <script>
+        function myFunc(){
+        let date=new Date()
+        let H=date.getHours()
+        let M=date.getMinutes()
+        let S=date.getSeconds()
+        let session="am"
+        if(H==0){
+            H==12
+        }
+        if(H>12){
+            H=H-12
+            session="pm"
+        }
+        H=(H<10)?"0"+H:H
+        M=(M<10)?"0"+M:M
+        S=(S<10)?"0"+S:S
+
+        let time=H+":"+M+":"+S+session
+        document.getElementById("clock").innerHTML=time
+        setTimeout(myFunc,1000)
+        }
+        myFunc()
+          
+    </script>
+</body>
+</html>
